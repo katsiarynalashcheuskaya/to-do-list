@@ -10,7 +10,7 @@ export type TodolistsType = {
 type TasksStateType = {
     [key:string]:InTasksType
 }
-type InTasksType = {
+type InTasksType =  {
     data:DataType[]
     filter: FilterValuesType
 }
@@ -19,18 +19,9 @@ type DataType = {
     title: string,
     isDone: boolean
 }
-export type FilterValuesType = "all" | "active" | "completed";
+export type FilterValuesType = "All" | "Active" | "Completed";
 
 function App() {
-
-    // let [tasks, setTasks] = useState([
-    //     {id: v1(), title: "HTML&CSS", isDone: true},
-    //     {id: v1(), title: "JS", isDone: true},
-    //     {id: v1(), title: "ReactJS", isDone: false},
-    //     {id: v1(), title: "Rest API", isDone: false},
-    //     {id: v1(), title: "GraphQL", isDone: false},
-    // ]);
-    // let [filter, setFilter] = useState<FilterValuesType>("all");
 
     let todolistID1=v1();
     let todolistID2=v1();
@@ -46,7 +37,7 @@ function App() {
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: false}
         ],
-            filter: 'all'
+            filter: 'All'
         },
         [todolistID2]:{
             data:[
@@ -54,7 +45,7 @@ function App() {
             {id: v1(), title: "Rest API2", isDone: true},
             {id: v1(), title: "GraphQL2", isDone: false}
         ],
-            filter: 'all'
+            filter: 'All'
     }
     });
 
@@ -94,11 +85,10 @@ function App() {
         <div className="App">
             {todolists.map(mapTodolist => {
                 let tasksForTodolist = tasks[mapTodolist.id].data;
-
-                if (tasks[mapTodolist.id].filter === "active") {
+                if (tasks[mapTodolist.id].filter === "Active") {
                     tasksForTodolist = tasksForTodolist.filter(t => !t.isDone);
                 }
-                if (tasks[mapTodolist.id].filter === "completed") {
+                if (tasks[mapTodolist.id].filter === "Completed") {
                     tasksForTodolist = tasksForTodolist.filter(t => t.isDone);
                 }
                 return(
