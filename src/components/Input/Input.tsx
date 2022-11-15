@@ -11,27 +11,27 @@ type InputPropsType = {
 }
 
 export const Input = (props:InputPropsType) => {
+
     let [label, setLabel] = useState("")
     let [error, setError] = useState<string | null>(null)
+
     const addTaskHandler = () => {
         if (label.trim() !== "") {
             props.callback(label.trim());
             setLabel("");
         } else {
             setError("Title is required");
-        }
-    }
-
+        }}
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null);
         if (e.key === 'Enter') {
             addTaskHandler();
         }
     }
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setLabel(e.currentTarget.value)
     }
+
     return (
         <div>
             <input value={label}
