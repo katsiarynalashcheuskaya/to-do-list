@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from "uuid";
+import { Input } from './components/Input/Input';
+import { Button } from './components/Button/Button';
 
 export type TodolistsType = {
     id: string,
@@ -26,10 +28,12 @@ function App() {
     let todolistID1=v1();
     let todolistID2=v1();
 
-    const [todolists, setTodolists] = useState<Array<TodolistsType>>([
+    const [todolists, setTodolists] = useState<Array<TodolistsType>>(
+        [
         {id: todolistID1, title: 'What to learn'},
         {id: todolistID2, title: 'What to buy'},
-    ])
+    ]
+    )
 
     const [tasks, setTasks] = useState<TasksStateType>({
         [todolistID1]:{
@@ -80,9 +84,29 @@ function App() {
         setTodolists(todolists.filter(el=>el.id!==todolistID))
         delete tasks[todolistID]
     }
+    function addNewTodolist(title: string){
+        const todolistID = v1()
+        let newTodolist:TodolistsType = {id: todolistID, title: title};
+        setTodolists([...todolists, newTodolist])
+        let newTask: InTasksType ={
+            data:[
+            {id: todolistID, title: 'nuhuhu', isDone: true},
+        ],
+            filter: 'All'}
+
+        setTasks({...tasks, [todolistID]:newTask})
+
+    }
+    function editTask(todolistID: string, taskId: string, newTitle:string){
+            setTasks({...tasks, [todolistID]:{...tasks[todolistID], data:tasks[todolistID].data.map(t=>t.id===taskId ? {...t, title:newTitle} : t)}})
+    }
+    function editTodolist(todolistID: string, newTitle:string){
+        setTodolists(todolists.map(t=>t.id===todolistID ? {...t, title:newTitle} : t))
+    }
 
     return (
         <div className="App">
+            <Input callback={addNewTodolist}/>
             {todolists.map(mapTodolist => {
                 let tasksForTodolist = tasks[mapTodolist.id].data;
                 if (tasks[mapTodolist.id].filter === "Active") {
@@ -102,9 +126,12 @@ function App() {
                         changeFilter={changeFilter}
                         addTask={addTask}
                         changeTaskStatus={changeStatus}
+                        editTask={editTask}
+                        editTodolist={editTodolist}
                         filter={tasks[mapTodolist.id].filter}
                     />
                 )
+
             })}
         </div>
     );
