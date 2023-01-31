@@ -1,10 +1,10 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {FilterValuesType} from './App';
 import { Button } from './components/Button/Button';
 import { EditableSpan } from './components/EditableSpan/EditableSpan';
 import { Input } from './components/Input/Input';
 
-type TaskType = {
+export type TaskType = {
     id: string
     title: string
     isDone: boolean

@@ -14,7 +14,6 @@ export const Button = (props:ButtonPropsType) => {
         callback()
     }
 
-    /*const finalClassName = `${(props.filter==='All' ? s.activeButton : props.filter==='Active' ? s.activeButton : props.filter==='Completed' ? s.activeButton : '')}`*/
     return (
         <button
             className={name===Filter? s.activeButton : ''}
