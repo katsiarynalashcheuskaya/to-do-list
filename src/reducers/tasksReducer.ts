@@ -1,7 +1,8 @@
-import {FilterValuesType, TasksStateType, todolistID1, todolistID2} from "../App"
+import {FilterValuesType, TasksStateType} from "../App"
 import {v1} from "uuid";
+import {todolistID1, todolistID2} from "./todolistsReducer";
 
-export const initialState: TasksStateType = {
+export const initialStateOfTasks: TasksStateType = {
     [todolistID1]: {
         data: [
             {id: v1(), title: "HTML&CSS", isDone: true},
@@ -19,7 +20,7 @@ export const initialState: TasksStateType = {
     }
 }
 
-export const tasksReducer = (state: TasksStateType = initialState, action: ActionsType): TasksStateType => {
+export const tasksReducer = (state: TasksStateType = initialStateOfTasks, action: ActionsType): TasksStateType => {
     switch (action.type) {
         case 'REMOVE-TASK': {
             /*setTasks({...tasks,[todolistID]:{...tasks[todolistID], data:tasks[todolistID].data.filter(f=>f.id!= id)}})*/

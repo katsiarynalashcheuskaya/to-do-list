@@ -4,9 +4,22 @@ import {Todolist} from './Todolist';
 import {v1} from "uuid";
 import { Input } from './components/Input/Input';
 import {useReducer} from "react";
-
-import {todolistReducer} from './reducers/todolistsReducer'
-import {initialState, tasksReducer, removeTaskAC, addTaskAC, changeStatusAC, editTaskAC, changeFilterAC} from './reducers/tasksReducer'
+import {
+    removeTodolistAC,
+    todolistReducer,
+    addNewTodolistAC,
+    editTodolistAC,
+    initialStateOfTodolists
+} from './reducers/todolistsReducer'
+import {
+    initialStateOfTasks,
+    tasksReducer,
+    removeTaskAC,
+    addTaskAC,
+    changeStatusAC,
+    editTaskAC,
+    changeFilterAC
+} from './reducers/tasksReducer'
 
 export type TodolistsType = {
     id: string,
@@ -15,7 +28,7 @@ export type TodolistsType = {
 export type TasksStateType = {
     [key:string]:InTasksType
 }
-type InTasksType =  {
+export type InTasksType =  {
     data:DataType[]
     filter: FilterValuesType
 }
@@ -24,20 +37,12 @@ type DataType = {
     title: string,
     isDone: boolean
 }
-export let todolistID1=v1();
-export let todolistID2=v1();
+
 export type FilterValuesType = "All" | "Active" | "Completed";
 
 function App() {
-
-    const [todolists, todolistsDispatch] = useReducer(todolistReducer,
-        [
-        {id: todolistID1, title: 'What to learn'},
-        {id: todolistID2, title: 'What to buy'},
-    ]
-    )
-
-    const [tasks, tasksDispatch] = useReducer(tasksReducer,initialState);
+    const [todolists, todolistsDispatch] = useReducer(todolistReducer,initialStateOfTodolists)
+    const [tasks, tasksDispatch] = useReducer(tasksReducer,initialStateOfTasks);
 
     function removeTask(todolistID: string, id: string) {
         tasksDispatch(removeTaskAC(todolistID, id))
@@ -45,7 +50,6 @@ function App() {
     function addTask(todolistID: string, title: string) {
         tasksDispatch(addTaskAC(todolistID, title))
         }
-
     function changeStatus(todolistID: string, taskId: string, isDone: boolean) {
         tasksDispatch(changeStatusAC(todolistID, taskId, isDone))
          }
@@ -53,28 +57,18 @@ function App() {
         tasksDispatch(changeFilterAC(todolistID, value))
 
     }
-    function removeTodolist(todolistID: string){
-       /* setTodolists(todolists.filter(el=>el.id!==todolistID))
-        delete tasks[todolistID]*/
-    }
-    function addNewTodolist(title: string){
-       /* const todolistID = v1()
-        let newTodolist:TodolistsType = {id: todolistID, title: title};
-        setTodolists([...todolists, newTodolist])
-        let newTask: InTasksType ={
-            data:[
-            {id: todolistID, title: 'nuhuhu', isDone: true},
-        ],
-            filter: 'All'}
-
-        setTasks({...tasks, [todolistID]:newTask})*/
-
-    }
     function editTask(todolistID: string, taskId: string, newTitle:string){
         tasksDispatch(editTaskAC(todolistID,taskId,  newTitle))
-           }
+    }
+    function removeTodolist(todolistID: string){
+        todolistsDispatch(removeTodolistAC(todolistID))
+    }
+    function addNewTodolist(title: string){
+        todolistsDispatch(addNewTodolistAC(title))
+        /*tasksDispatch(addTaskAC(todolistID, title))*/
+    }
     function editTodolist(todolistID: string, newTitle:string){
-        /*setTodolists(todolists.map(t=>t.id===todolistID ? {...t, title:newTitle} : t))*/
+        todolistsDispatch(editTodolistAC(todolistID, newTitle))
     }
 
     return (
