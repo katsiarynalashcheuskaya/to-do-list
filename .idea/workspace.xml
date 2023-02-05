@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3963bc87-a351-4bf2-8729-e2ecea95a560" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/todolists-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/tasksReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/tasksReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolists-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/todolistsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/todolistsReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +20,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2HSTgFU3Ke71pbWw05Tpj1E0qZG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -56,7 +53,20 @@
       <recent name="$PROJECT_DIR$/src/components/Button" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.correct todolist should be edited">
+  <component name="RunManager" selected="Jest.task should change status">
+    <configuration name="correct task should be removed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/reducers/tasks-reducer.test.ts" />
+      <test-names>
+        <test-name value="correct task should be removed" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="correct todolist should be added" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -83,46 +93,39 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="correct todolist should be removed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="new task should be added" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/reducers/todolists-reducer.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/reducers/tasks-reducer.test.ts" />
       <test-names>
-        <test-name value="correct todolist should be removed" />
+        <test-name value="new task should be added" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="start (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
+    <configuration name="task should change status" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/reducers/tasks-reducer.test.ts" />
+      <test-names>
+        <test-name value="task should change status" />
+      </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.correct todolist should be edited" />
+        <item itemvalue="Jest.task should change status" />
+        <item itemvalue="Jest.new task should be added" />
+        <item itemvalue="Jest.correct task should be removed" />
         <item itemvalue="Jest.correct todolist should be added" />
-        <item itemvalue="Jest.correct todolist should be removed" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.start (1)" />
+        <item itemvalue="Jest.correct todolist should be edited" />
       </list>
     </recent_temporary>
   </component>
@@ -152,6 +155,8 @@
       <workItem from="1675199993187" duration="3000" />
       <workItem from="1675288159619" duration="4798000" />
       <workItem from="1675305499663" duration="2461000" />
+      <workItem from="1675307985113" duration="45000" />
+      <workItem from="1675613056798" duration="11056000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 import {TodolistsType} from "../App";
-import {ActionsType, todolistReducer} from "./todolistsReducer";
+import {todolistReducer, TodolistsActionsType} from "./todolistsReducer";
 
 test('correct todolist should be removed',()=>{
     let todolistID1=v1();
@@ -10,7 +10,7 @@ test('correct todolist should be removed',()=>{
         {id: todolistID2, title: 'What to buy'},
     ]
 
-    const action: ActionsType = {
+    const action: TodolistsActionsType = {
         type: "REMOVE-TODOLIST",
         payload: {todolistID: todolistID1}
     }
@@ -31,7 +31,7 @@ test('correct todolist should be added',()=>{
         {id: todolistID2, title: 'What to buy'},
     ]
 
-    const action: ActionsType = {
+    const action: TodolistsActionsType = {
         type: "ADD-TODOLIST",
         payload: {title: newTodolistTitle}
     }
@@ -52,7 +52,7 @@ test('correct todolist should be edited',()=>{
         {id: todolistID2, title: 'What to buy'},
     ]
 
-    const action: ActionsType = {
+    const action: TodolistsActionsType = {
         type: "EDIT-TODOLIST",
         payload: {todolistID: todolistID1, newTitle: newTodolistTitle}
     }

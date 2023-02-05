@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
-import {v1} from "uuid";
 import { Input } from './components/Input/Input';
 import {useReducer} from "react";
 import {

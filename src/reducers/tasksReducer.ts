@@ -5,22 +5,23 @@ import {todolistID1, todolistID2} from "./todolistsReducer";
 export const initialStateOfTasks: TasksStateType = {
     [todolistID1]: {
         data: [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JS", isDone: false}
+            {id: '1', title: "HTML&CSS", isDone: true},
+            {id: '2', title: "JS", isDone: false}
         ],
         filter: 'All'
     },
     [todolistID2]: {
         data: [
-            {id: v1(), title: "ReactJS2", isDone: false},
-            {id: v1(), title: "Rest API2", isDone: true},
-            {id: v1(), title: "GraphQL2", isDone: false}
+            {id: '1', title: "ReactJS2", isDone: false},
+            {id: '2', title: "Rest API2", isDone: true},
+            {id: '3', title: "GraphQL2", isDone: false}
         ],
         filter: 'All'
     }
 }
 
-export const tasksReducer = (state: TasksStateType = initialStateOfTasks, action: ActionsType): TasksStateType => {
+export const tasksReducer = (state: TasksStateType = initialStateOfTasks,
+                             action: TasksActionsType): TasksStateType => {
     switch (action.type) {
         case 'REMOVE-TASK': {
             /*setTasks({...tasks,[todolistID]:{...tasks[todolistID], data:tasks[todolistID].data.filter(f=>f.id!= id)}})*/
@@ -79,7 +80,7 @@ export const tasksReducer = (state: TasksStateType = initialStateOfTasks, action
     }
 }
 
-type ActionsType = ReturnType<typeof removeTaskAC> |
+export type TasksActionsType = ReturnType<typeof removeTaskAC> |
     ReturnType<typeof addTaskAC> |
     ReturnType<typeof changeStatusAC> |
     ReturnType<typeof changeFilterAC> |
