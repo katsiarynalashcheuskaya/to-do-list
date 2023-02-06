@@ -9,37 +9,18 @@ export const initialStateOfTodolists: TodolistsType[] = [
         {id: todolistID2, title: 'What to buy'},
 ]
 
-
 export const todolistReducer=(state:TodolistsType[] = initialStateOfTodolists,
                               action:TodolistsActionsType): TodolistsType[]=> {
     switch (action.type) {
         case 'REMOVE-TODOLIST': {
-            /* setTodolists(todolists.filter(el=>el.id!==todolistID))
-        delete tasks[todolistID]*/
             return state.filter(el => el.id !== action.payload.todolistID)
         }
         case 'ADD-TODOLIST': {
-            /* const todolistID = v1()
-       let newTodolist:TodolistsType =
-       {id: todolistID, title: title};
-       setTodolists([...todolists, newTodolist])
-       let newTask: InTasksType ={
-           data:[
-           {id: todolistID, title: 'nuhuhu', isDone: true},
-       ],
-           filter: 'All'}
-
-       setTasks({...tasks, [todolistID]:newTask})*/
-            const todolistID = v1()
-            let newTodolist: TodolistsType =
-                {id: todolistID, title: action.payload.title};
-
-            return [...state, newTodolist]
+            return [...state, {id: action.payload.todolistID, title: action.payload.title}]
         }
-        case 'EDIT-TODOLIST': {
-            /*setTodolists(todolists.map(t=>t.id===todolistID ? {...t, title:newTitle} : t))*/
-            return state.map(t => t.id === action.payload.todolistID ? {...t, title: action.payload.newTitle} : t)
-        }
+        case 'EDIT-TODOLIST':
+            return state.map(t => (t.id === action.payload.todolistID) ?
+                {...t, title: action.payload.newTitle} : t)
         default:
             return state
     }
@@ -58,7 +39,7 @@ export const removeTodolistAC=(todolistID: string)=>{
 export const addNewTodolistAC=(title: string)=>{
     return{
         type:'ADD-TODOLIST',
-        payload: {title}
+        payload: {title, todolistID: v1()}
     } as const
 }
 export const editTodolistAC=(todolistID: string, newTitle:string)=>{

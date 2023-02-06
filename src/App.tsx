@@ -60,11 +60,13 @@ function App() {
         tasksDispatch(editTaskAC(todolistID,taskId,  newTitle))
     }
     function removeTodolist(todolistID: string){
-        todolistsDispatch(removeTodolistAC(todolistID))
+        const action = removeTodolistAC(todolistID)
+        todolistsDispatch(action)
     }
     function addNewTodolist(title: string){
-        todolistsDispatch(addNewTodolistAC(title))
-        /*tasksDispatch(addTaskAC(todolistID, title))*/
+        const action = addNewTodolistAC(title)
+        todolistsDispatch(action)
+        tasksDispatch(action)
     }
     function editTodolist(todolistID: string, newTitle:string){
         todolistsDispatch(editTodolistAC(todolistID, newTitle))

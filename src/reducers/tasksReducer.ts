@@ -1,20 +1,20 @@
-import {FilterValuesType, TasksStateType} from "../App"
+import {FilterValuesType, InTasksType, TasksStateType} from "../App"
 import {v1} from "uuid";
-import {todolistID1, todolistID2} from "./todolistsReducer";
+import {addNewTodolistAC, removeTodolistAC, todolistID1, todolistID2} from "./todolistsReducer";
 
 export const initialStateOfTasks: TasksStateType = {
     [todolistID1]: {
         data: [
-            {id: '1', title: "HTML&CSS", isDone: true},
-            {id: '2', title: "JS", isDone: false}
+            {id: v1(), title: "HTML&CSS", isDone: true},
+            {id: v1(), title: "JS", isDone: false}
         ],
         filter: 'All'
     },
     [todolistID2]: {
         data: [
-            {id: '1', title: "ReactJS2", isDone: false},
-            {id: '2', title: "Rest API2", isDone: true},
-            {id: '3', title: "GraphQL2", isDone: false}
+            {id: v1(), title: "ReactJS2", isDone: false},
+            {id: v1(), title: "Rest API2", isDone: true},
+            {id: v1(), title: "GraphQL2", isDone: false}
         ],
         filter: 'All'
     }
@@ -24,7 +24,6 @@ export const tasksReducer = (state: TasksStateType = initialStateOfTasks,
                              action: TasksActionsType): TasksStateType => {
     switch (action.type) {
         case 'REMOVE-TASK': {
-            /*setTasks({...tasks,[todolistID]:{...tasks[todolistID], data:tasks[todolistID].data.filter(f=>f.id!= id)}})*/
             return {
                 ...state,
                 [action.payload.todolistID]: {
@@ -35,7 +34,6 @@ export const tasksReducer = (state: TasksStateType = initialStateOfTasks,
             }
         }
         case 'ADD-TASK': {
-            /*setTasks({...tasks, [todolistID]:{...tasks[todolistID], data: [newTask, ...tasks[todolistID].data]}})*/
             let newTask = {id: v1(), title: action.payload.title, isDone: false};
             return {
                 ...state,
@@ -46,7 +44,6 @@ export const tasksReducer = (state: TasksStateType = initialStateOfTasks,
             }
         }
         case 'CHANGE-TASK-STATUS': {
-            /*setTasks({...tasks,[todolistID]:{...tasks[todolistID], data:tasks[todolistID].data.map(c=>c.id===taskId ? {...c, isDone} : c)}})}*/
             return {
                 ...state, [action.payload.todolistID]: {
                     ...state[action.payload.todolistID],
@@ -56,14 +53,12 @@ export const tasksReducer = (state: TasksStateType = initialStateOfTasks,
             }
         }
         case 'CHANGE-FILTER': {
-            /* setTasks({...tasks, [todolistID]: {...tasks[todolistID], filter:value}})*/
             return {
                 ...state,
                 [action.payload.todolistID]: {...state[action.payload.todolistID], filter: action.payload.value}
             }
         }
         case 'EDIT-TASK': {
-            /*setTasks({...tasks, [todolistID]:{...tasks[todolistID], data:tasks[todolistID].data.map(t=>t.id===taskId ? {...t, title:newTitle} : t)}})*/
             return {
                 ...state,
                 [action.payload.todolistID]: {
@@ -75,6 +70,18 @@ export const tasksReducer = (state: TasksStateType = initialStateOfTasks,
                 }
             }
         }
+        case 'ADD-TODOLIST': {
+            return {
+                ...state,
+                [action.payload.todolistID]: {data: [],
+                    filter: 'All'}
+            }
+    }
+        case 'REMOVE-TODOLIST': {
+            let copyState = {...state}
+            delete copyState[action.payload.todolistID]
+            return copyState
+        }
         default:
             return state
     }
@@ -84,7 +91,9 @@ export type TasksActionsType = ReturnType<typeof removeTaskAC> |
     ReturnType<typeof addTaskAC> |
     ReturnType<typeof changeStatusAC> |
     ReturnType<typeof changeFilterAC> |
-    ReturnType<typeof editTaskAC>
+    ReturnType<typeof editTaskAC> |
+    ReturnType<typeof addNewTodolistAC> |
+    ReturnType<typeof removeTodolistAC>
 
 export const removeTaskAC = (todolistID: string, id: string) => {
     return {
