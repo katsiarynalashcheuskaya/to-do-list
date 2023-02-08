@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import {FilterValuesType} from './App';
+import {FilterValuesType} from './AppWithReducers';
 import { Button } from './components/Button/Button';
 import { EditableSpan } from './components/EditableSpan/EditableSpan';
 import { Input } from './components/Input/Input';

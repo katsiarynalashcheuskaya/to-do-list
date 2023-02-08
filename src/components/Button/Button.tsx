@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Button.module.css';
-import {FilterValuesType} from "../../App";
+import {FilterValuesType} from "../../AppWithReducers";
 
 type ButtonPropsType = {
     name:string;

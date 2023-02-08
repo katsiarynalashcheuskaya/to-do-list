@@ -1,4 +1,4 @@
-import {TodolistsType} from "../App"
+import {TodolistsType} from "../AppWithRedux"
 import {v1} from "uuid";
 
 export let todolistID1=v1();
@@ -9,7 +9,7 @@ export const initialStateOfTodolists: TodolistsType[] = [
         {id: todolistID2, title: 'What to buy'},
 ]
 
-export const todolistReducer=(state:TodolistsType[] = initialStateOfTodolists,
+export const todolistsReducer=(state:TodolistsType[] = initialStateOfTodolists,
                               action:TodolistsActionsType): TodolistsType[]=> {
     switch (action.type) {
         case 'REMOVE-TODOLIST': {

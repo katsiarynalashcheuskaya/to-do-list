@@ -1,4 +1,4 @@
-import {FilterValuesType, InTasksType, TasksStateType} from "../App"
+import {FilterValuesType, TasksStateType} from "../AppWithRedux"
 import {v1} from "uuid";
 import {addNewTodolistAC, removeTodolistAC, todolistID1, todolistID2} from "./todolistsReducer";
 

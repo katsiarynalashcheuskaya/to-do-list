@@ -1,9 +1,11 @@
 import {addNewTodolistAC, removeTodolistAC} from "./todolistsReducer";
-import {TasksStateType} from "../App";
+import {TasksStateType} from "../AppWithRedux";
 import {addTaskAC, changeFilterAC, editTaskAC, removeTaskAC, TasksActionsType, tasksReducer} from "./tasksReducer";
 
-test('correct task should be removed', () => {
-    const startState: TasksStateType = {
+let startState: TasksStateType;
+
+beforeEach(()=>{
+    startState = {
         "todolistID1": {
             data: [
                 {id: '1', title: "HTML&CSS", isDone: true},
@@ -20,6 +22,9 @@ test('correct task should be removed', () => {
             filter: 'All'
         }
     }
+})
+
+test('correct task should be removed', () => {
 
     const action = removeTaskAC('todolistID2', '2')
     const endState = tasksReducer(startState, action)

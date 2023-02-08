@@ -5,7 +5,7 @@ import { Input } from './components/Input/Input';
 import {useReducer} from "react";
 import {
     removeTodolistAC,
-    todolistReducer,
+    todolistsReducer,
     addNewTodolistAC,
     editTodolistAC,
     initialStateOfTodolists
@@ -39,8 +39,8 @@ type DataType = {
 
 export type FilterValuesType = "All" | "Active" | "Completed";
 
-function App() {
-    const [todolists, todolistsDispatch] = useReducer(todolistReducer,initialStateOfTodolists)
+function AppWithReducers() {
+    const [todolists, todolistsDispatch] = useReducer(todolistsReducer,initialStateOfTodolists)
     const [tasks, tasksDispatch] = useReducer(tasksReducer,initialStateOfTasks);
 
     function removeTask(todolistID: string, id: string) {
@@ -105,4 +105,4 @@ function App() {
     );
 }
 
-export default App;
+export default AppWithReducers;
