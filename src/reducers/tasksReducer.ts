@@ -1,9 +1,9 @@
 import {FilterValuesType, TasksStateType} from "../AppWithRedux"
 import {v1} from "uuid";
-import {addNewTodolistAC, removeTodolistAC, todolistID1, todolistID2} from "./todolistsReducer";
+import {addNewTodolistAC, removeTodolistAC} from "./todolistsReducer";
 
 export const initialStateOfTasks: TasksStateType = {
-    [todolistID1]: {
+    /*[todolistID1]: {
         data: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: false}
@@ -12,12 +12,10 @@ export const initialStateOfTasks: TasksStateType = {
     },
     [todolistID2]: {
         data: [
-            {id: v1(), title: "ReactJS2", isDone: false},
-            {id: v1(), title: "Rest API2", isDone: true},
-            {id: v1(), title: "GraphQL2", isDone: false}
+            id: v1(), title: "ReactJS2", isDone: false}
         ],
         filter: 'All'
-    }
+    }*/
 }
 
 export const tasksReducer = (state: TasksStateType = initialStateOfTasks,

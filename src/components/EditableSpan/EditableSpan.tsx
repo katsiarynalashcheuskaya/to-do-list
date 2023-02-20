@@ -1,17 +1,18 @@
-import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
+import React, {ChangeEvent, useState, KeyboardEvent, memo} from 'react';
 
 type EditableSpanPropsType = {
     title:string
     callback: (newTitle:string)=>void
 }
 
-export const EditableSpan = (props:EditableSpanPropsType) => {
+export const EditableSpan = memo((props:EditableSpanPropsType) => {
+    console.log('EditableSpan')
     const {title, callback} = props;
 
     const [edit, setEdit] = useState(false)
     let [label, setLabel] = useState(title)
 
-    const onDoubleClickHandler=()=>{
+    const onDoubleClickHandler = () =>{
         setEdit(!edit)
         callback(label)
     }
@@ -35,4 +36,4 @@ export const EditableSpan = (props:EditableSpanPropsType) => {
             />
         : <span onDoubleClick={onDoubleClickHandler}>{title}</span>
     );
-};
+})

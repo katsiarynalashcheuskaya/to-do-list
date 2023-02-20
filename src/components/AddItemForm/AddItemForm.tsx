@@ -1,29 +1,30 @@
-import React, {ChangeEvent, useState } from 'react';
+import React, {ChangeEvent, memo, useState} from 'react';
 import { Button } from '../Button/Button';
-import s from './Input.module.css';
+import s from './AddItemForm.module.css';
 import {
     KeyboardEvent
 } from "../../../../../../../Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react";
 
 
 type InputPropsType = {
-    callback: (title:string) => void
+    addItem: (title:string) => void
 }
 
-export const Input = (props:InputPropsType) => {
-
+export const AddItemForm = memo((props:InputPropsType) => {
     let [label, setLabel] = useState("")
     let [error, setError] = useState<string | null>(null)
 
     const addTaskHandler = () => {
         if (label.trim() !== "") {
-            props.callback(label.trim());
+            props.addItem(label.trim());
             setLabel("");
         } else {
             setError("Title is required");
         }}
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
+        if (error !== null) {
+            setError(null);
+        }
         if (e.key === 'Enter') {
             addTaskHandler();
         }
@@ -33,7 +34,7 @@ export const Input = (props:InputPropsType) => {
     }
 
     return (
-        <div>
+        <div className={s.addBlock}>
             <input value={label}
                    onChange={onChangeHandler}
                    onKeyDown={onKeyPressHandler}
@@ -43,4 +44,4 @@ export const Input = (props:InputPropsType) => {
             {error && <div className="error-message">{error}</div>}
         </div>
     );
-}
+})

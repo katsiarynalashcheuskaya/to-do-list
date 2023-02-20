@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
-import { Input } from './components/Input/Input';
+import { AddItemForm } from './components/AddItemForm/AddItemForm';
 import {useReducer} from "react";
 import {
     removeTodolistAC,
@@ -74,7 +74,7 @@ function AppWithReducers() {
 
     return (
         <div className="App">
-            <Input callback={addNewTodolist}/>
+            <AddItemForm addItem={addNewTodolist}/>
             {todolists.map(mapTodolist => {
                 let tasksForTodolist = tasks[mapTodolist.id].data;
                 if (tasks[mapTodolist.id].filter === "Active") {

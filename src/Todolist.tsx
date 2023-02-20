@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {FilterValuesType} from './AppWithReducers';
 import { Button } from './components/Button/Button';
 import { EditableSpan } from './components/EditableSpan/EditableSpan';
-import { Input } from './components/Input/Input';
+import { AddItemForm } from './components/AddItemForm/AddItemForm';
 
 export type TaskType = {
     id: string
@@ -37,7 +37,7 @@ export function Todolist(props: PropsType) {
             <Button name={'x'} callback={removeTodolistHandler}/>
         </h3>
         <div>
-            <Input callback={addTaskHandler}/>
+            <AddItemForm addItem={addTaskHandler}/>
         </div>
         <ul>
             {
