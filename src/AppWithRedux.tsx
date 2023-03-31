@@ -12,6 +12,7 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./reducers/store";
 import {TodolistWithRedux} from "./TodolistWithRedux";
+import {todolistsSelector} from "./reducers/selectors/todolistsSelector";
 
 export type TodolistsType = {
     id: string,
@@ -36,7 +37,7 @@ const AppWithRedux = () => {
     console.log('APPWithRedux')
     /*const todolists = useReducer(todolistsReducer,initialStateOfTodolists)
     const tasks = useReducer(tasksReducer,initialStateOfTasks);*/
-    const todolists = useSelector<AppRootStateType, Array<TodolistsType>>(state=>state.todolists)
+    const todolists = useSelector<AppRootStateType, Array<TodolistsType>>(todolistsSelector)
     const dispatch = useDispatch();
 
     const changeFilter = useCallback((todolistID: string, value: FilterValuesType) => {

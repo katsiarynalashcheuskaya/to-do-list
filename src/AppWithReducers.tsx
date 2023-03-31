@@ -20,23 +20,6 @@ import {
     changeFilterAC
 } from './reducers/tasksReducer'
 
-export type TodolistsType = {
-    id: string,
-    title: string
-}
-export type TasksStateType = {
-    [key:string]:InTasksType
-}
-export type InTasksType =  {
-    data:DataType[]
-    filter: FilterValuesType
-}
-type DataType = {
-    id: string,
-    title: string,
-    isDone: boolean
-}
-
 export type FilterValuesType = "All" | "Active" | "Completed";
 
 function AppWithReducers() {

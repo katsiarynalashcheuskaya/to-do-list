@@ -40,7 +40,7 @@ export const AddItemForm = memo((props:InputPropsType) => {
                    onKeyDown={onKeyPressHandler}
                    className={error ? "error" : ""}
             />
-            <Button name={'+'} callback={addTaskHandler}/>
+            <Button name={'+'} callback={addTaskHandler}/>!
             {error && <div className="error-message">{error}</div>}
         </div>
     );
